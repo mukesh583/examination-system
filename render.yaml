@@ -47,3 +47,10 @@ services:
         value: true
       - key: APP_URL
         value: https://examination-system-uzqp.onrender.com
+
+databases:
+  - name: examination-system-db
+    databaseName: examination_db
+    user: examination_user
+    region: singapore
+    plan: free
