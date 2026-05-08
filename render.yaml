@@ -4,8 +4,8 @@ services:
     env: docker
     region: singapore
     plan: free
-    buildCommand: composer install --optimize-autoloader --no-dev && php artisan migrate --force && php artisan db:seed --class=AdminSeeder --force && php artisan config:cache && php artisan route:cache && php artisan view:cache
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    buildCommand: composer install --optimize-autoloader --no-dev && php artisan migrate --force && php artisan db:seed --class=AdminSeeder --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && chmod -R 775 storage bootstrap/cache
+    startCommand: php -S 0.0.0.0:$PORT -t public
     envVars:
       - key: APP_NAME
         value: Examination Management System
@@ -38,10 +38,12 @@ services:
           name: examination-system-db
           property: password
       - key: SESSION_DRIVER
-        value: file
+        value: database
       - key: QUEUE_CONNECTION
         value: sync
       - key: SESSION_SECURE_COOKIES
         value: true
       - key: FORCE_HTTPS
         value: true
+      - key: APP_URL
+        value: https://examination-system-uzqp.onrender.com
