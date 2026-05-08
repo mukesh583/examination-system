@@ -13,7 +13,35 @@ services:
         value: production
       - key: APP_DEBUG
         value: false
+      - key: APP_KEY
+        value: base64:sfmJWnDSXwPdUEmarOa0y4h1vTbNfRURwyhK4jQ2VSM=
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: examination-system-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: examination-system-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: examination-system-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: examination-system-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: examination-system-db
+          property: password
       - key: SESSION_DRIVER
         value: file
       - key: QUEUE_CONNECTION
         value: sync
+      - key: SESSION_SECURE_COOKIES
+        value: true
+      - key: FORCE_HTTPS
+        value: true

@@ -40,4 +40,4 @@ RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 EXPOSE 8000
 
 # Start Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan migrate --force && php artisan db:seed --class=AdminSeeder --force && php artisan serve --host=0.0.0.0 --port=8000
