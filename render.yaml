@@ -5,7 +5,7 @@ services:
     region: singapore
     plan: free
     buildCommand: composer install --optimize-autoloader --no-dev && chmod -R 775 storage bootstrap/cache
-    startCommand: php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan migrate --force && php artisan db:seed --class=AdminSeeder --force && php -S 0.0.0.0:$PORT -t public
+    startCommand: php artisan config:clear && php artisan cache:clear && php artisan migrate --force && (php artisan db:seed --class=AdminSeeder --force || true) && php -S 0.0.0.0:$PORT -t public
     envVars:
       - key: APP_NAME
         value: Examination Management System
