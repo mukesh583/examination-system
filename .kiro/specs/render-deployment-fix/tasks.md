@@ -1,3 +1,4 @@
+
 # Implementation Plan
 
 - [x] 1. Write bug condition exploration test
